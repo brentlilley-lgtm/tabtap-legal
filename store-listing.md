@@ -58,7 +58,7 @@ YOUR PRIVACY — WE TAKE IT SERIOUSLY
 • When you send a link, only the people you share it with can see the receipt, through a private link that expires.
 • No ads. No tracking for advertising.
 
-Full details: https://taptab-legal.vercel.app/privacy
+Full details: https://tabtap.co/privacy
 
 
 FEATURES
@@ -95,8 +95,8 @@ SUPPORT
 Questions? Feedback? Just want to say hi?
 tabtapap@gmail.com
 
-Privacy Policy: https://taptab-legal.vercel.app/privacy
-Terms of Service: https://taptab-legal.vercel.app/terms
+Privacy Policy: https://tabtap.co/privacy
+Terms of Service: https://tabtap.co/terms
 ```
 
 ---
@@ -113,6 +113,6 @@ Terms of Service: https://taptab-legal.vercel.app/terms
 | **Content rating** | Everyone |
 | **Contains ads** | No |
 | **In-app purchases** | Yes — $0.50 consumable (“Split Pass”) |
-| **Privacy policy URL** | https://taptab-legal.vercel.app/privacy |
+| **Privacy policy URL** | https://tabtap.co/privacy |
 | **Contact email** | tabtapap@gmail.com |
-| **Contact website** | https://taptab-legal.vercel.app |
+| **Contact website** | https://tabtap.co |
