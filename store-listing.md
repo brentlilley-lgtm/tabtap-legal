@@ -24,9 +24,9 @@ No spreadsheets. No guessing. No “just split it evenly” when someone only ha
 
 HOW IT WORKS
 
-1. Snap — Take a photo of the receipt (or pick one from your library). TabTap reads it instantly using on-device text recognition.
+1. Snap — Take a photo of the receipt (or pick one from your library). TabTap reads it in seconds.
 
-2. Tap — Each person taps the items they ordered directly on the receipt photo. Colorful brushstrokes show who claimed what — pass the phone around the table.
+2. Tap — Each person taps the items they ordered directly on the receipt. Colorful brushstrokes show who claimed what — pass the phone around, or send a link so friends can tap from their own phones.
 
 3. Split — TabTap calculates each person’s share with proportional tax and your chosen tip (15%, 20%, 25%, or custom).
 
@@ -52,19 +52,20 @@ Fifty cents to settle a table of six in under a minute? We think that’s fair.
 
 YOUR PRIVACY — WE TAKE IT SERIOUSLY
 
-• No account signup required. Ever.
-• No data collection. Your name and payment handles stay on your device.
-• Receipt photos are processed entirely on your phone — nothing is uploaded.
-• On-device OCR means your receipt never leaves your hands.
-• We don’t sell, share, or trade your information. Period.
+• No account, no sign-up. Ever.
+• We never sell, share, or trade your information. Period.
+• Your receipt is read securely, kept private, and deleted automatically — usually within an hour of finishing your split.
+• When you send a link, only the people you share it with can see the receipt, through a private link that expires.
+• No ads. No tracking for advertising.
 
 Full details: https://taptab-legal.vercel.app/privacy
 
 
 FEATURES
 
-✓ On-device receipt scanning (Google ML Kit — no cloud, no upload)
+✓ Fast receipt scanning powered by AI
 ✓ Tap-to-claim with organic brushstroke overlays — each person gets a unique color
+✓ Pass the phone, or send a link so friends claim from their own phones
 ✓ Proportional tax and tip calculation (15/20/25% or custom)
 ✓ Payment requests via Venmo, PayPal, Zelle, and Cash App
 ✓ Hold-to-undo — long press removes your last tap
@@ -92,7 +93,7 @@ TabTap opens whichever app each person prefers — no lock-in to one payment pla
 SUPPORT
 
 Questions? Feedback? Just want to say hi?
-HelloTapTab@gmail.com
+tabtapap@gmail.com
 
 Privacy Policy: https://taptab-legal.vercel.app/privacy
 Terms of Service: https://taptab-legal.vercel.app/terms
@@ -113,5 +114,5 @@ Terms of Service: https://taptab-legal.vercel.app/terms
 | **Contains ads** | No |
 | **In-app purchases** | Yes — $0.50 consumable (“Split Pass”) |
 | **Privacy policy URL** | https://taptab-legal.vercel.app/privacy |
-| **Contact email** | HelloTapTab@gmail.com |
+| **Contact email** | tabtapap@gmail.com |
 | **Contact website** | https://taptab-legal.vercel.app |
