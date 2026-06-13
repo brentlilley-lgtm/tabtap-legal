@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy — TabTap</title>
-  <meta name="description" content="How TabTap handles your information. We don't collect or sell personal data." />
+  <meta name="description" content="How TabTap handles your information: cloud receipt reading, brief share-link storage, and fast automatic deletion. We never sell your data." />
   <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
@@ -16,7 +16,7 @@
     </nav>
 
     <h1>Privacy Policy</h1>
-    <p class="meta">Last updated: April 30, 2026 · Effective date: April 30, 2026</p>
+    <p class="meta">Last updated: June 13, 2026 · Effective date: June 13, 2026</p>
 
     <p>
       This Privacy Policy describes how TabTap (<strong>"we"</strong>, <strong>"us"</strong>, <strong>"our"</strong>,
@@ -26,128 +26,131 @@
     <div class="summary">
       <h2>Plain-language summary</h2>
       <ul>
-        <li><strong>TabTap keeps your data on your device.</strong> There is no TabTap server, no user account, and no sign-up.</li>
-        <li>The "owner profile" you set up — your name and one or more payment handles — lives only on your phone.</li>
-        <li><strong>Receipt photos stay on your device.</strong> Optical character recognition (OCR) runs locally; receipt text and bounding boxes are never uploaded by TabTap.</li>
-        <li><strong>Payment requests are dispatched through third-party apps</strong> (Venmo, PayPal, Zelle, Cash App). TabTap never sees, stores, or moves the actual money.</li>
-        <li><strong>Sentry</strong> receives anonymized crash reports so we can fix bugs — this is the only data that leaves your device, and only when a Sentry account has been configured for the app.</li>
-        <li>TabTap charges <strong>$0.50 per bill split</strong> through Apple In-App Purchase or Google Play Billing. Apple and Google handle the transaction; we do not see your payment method.</li>
+        <li><strong>No accounts, no sign-up.</strong> Your owner profile — your name and the payment handles you choose to save — lives on your device.</li>
+        <li><strong>Reading the receipt uses the cloud.</strong> When you scan a receipt, the photo is sent securely to our server and to Anthropic (the company behind Claude) to read the items and prices. We don't keep the photo after reading it, and Anthropic does not use it to train its models.</li>
+        <li><strong>Sharing a link stores a little more, briefly.</strong> If you choose "send a link" instead of passing the phone, your receipt photo and the split details are stored in our cloud so guests can open the link. The photo is private and shown only through temporary links that expire.</li>
+        <li><strong>We delete it quickly.</strong> The receipt photo is deleted about an hour after you finish the split (within 24 hours no matter what). The entire split record is deleted 48 hours after it's created.</li>
+        <li><strong>Payments happen in other apps</strong> (Venmo, PayPal, Zelle, Cash App). TabTap never sees, holds, or moves money.</li>
+        <li><strong>Crash reports</strong> (via Sentry, when configured) and the <strong>$0.50 in-app purchase</strong> (via Apple or Google) are the other things that leave your device.</li>
+        <li><strong>We do not sell your information. Ever.</strong></li>
       </ul>
     </div>
 
     <h2>1. Information we handle</h2>
 
-    <h3>1.1. Information you enter</h3>
+    <h3>1.1. Your owner profile (stays on your device)</h3>
     <p>When you set up your owner profile in TabTap, you may enter:</p>
     <ul>
       <li>Your name</li>
-      <li>One or more payment handles you choose to share (Venmo username, PayPal email, Zelle phone or email, Cash App handle)</li>
+      <li>One or more payment handles you choose to save (Venmo username, PayPal email or PayPal.me link, Zelle phone or email, Cash App handle)</li>
     </ul>
     <p>
-      This information is stored on your device only, using the operating system's standard application storage
-      (AsyncStorage on top of the iOS file system or Android SharedPreferences). It is <strong>not</strong>
-      uploaded to any TabTap server, and there is no TabTap account or login.
+      Your profile is stored on your device using the operating system's standard application storage. There is
+      no TabTap account or login. Your profile is only transmitted off your device if and when you choose to create
+      a share link (see 1.3) — at which point the name and handles you include travel with that split so guests can pay you.
     </p>
 
-    <h3>1.2. Camera and photo library</h3>
-    <p>When you scan a receipt, TabTap requests permission to:</p>
+    <h3>1.2. Reading your receipt (camera, photo library, and cloud parsing)</h3>
+    <p>When you scan a receipt, TabTap requests permission to take a photo or choose one from your photo library. To turn that photo into a list of items and prices:</p>
     <ul>
-      <li>Take a photo with your camera, or</li>
-      <li>Choose an existing photo from your photo library</li>
+      <li>The photo is sent securely (over HTTPS) to our server, which forwards it to <strong>Anthropic</strong> (the maker of Claude) to read the items, prices, and totals.</li>
+      <li>Your device also runs on-device text recognition (Google ML Kit) to position the items on the photo so you can tap them.</li>
     </ul>
     <p>
-      <strong>Receipt photos are processed entirely on your device.</strong> Google ML Kit performs OCR locally
-      to extract item names, prices, and bounding boxes. The photo and the OCR results are never uploaded to
-      TabTap or any third-party server by us.
-    </p>
-    <p>
-      The photo is held in memory for the duration of one bill-splitting session and discarded when you finish
-      or leave the flow. We do not save it to a cloud, mail it to a server, or share it with anyone.
+      We do <strong>not</strong> store the photo on our server as part of this reading step — it is used to extract
+      the items and then discarded from the request. Anthropic processes the image to return the items and
+      <strong>does not use it to train its models</strong>. This cloud reading happens for every scan, whether you
+      pass the phone or send a link.
     </p>
 
-    <h3>1.3. Tap data and split calculations</h3>
+    <h3>1.3. Share-link splits (only if you choose to send a link)</h3>
     <p>
-      While you and your friends tap items on the receipt, TabTap tracks which person tapped which items in
-      temporary in-memory state. This data exists only for the duration of one session and is discarded when
-      you complete or abandon the split. None of it is persisted on your device or transmitted.
-    </p>
-
-    <h3>1.4. Crash reports</h3>
-    <p>
-      TabTap includes the Sentry SDK to help us identify and fix bugs. When the app encounters an unexpected
-      error and Sentry has been configured, Sentry collects:
+      Instead of passing the phone around, you can send a link so friends can claim their items in a web browser.
+      If you do, the following is stored in our cloud database and storage (provided by <strong>Supabase</strong>) so the link works:
     </p>
     <ul>
-      <li>A stack trace of the error</li>
-      <li>The version of the app</li>
-      <li>Generic device information (model, operating system version)</li>
-      <li>A short trail of session events leading up to the error (button taps, screen transitions, navigation actions)</li>
+      <li>The <strong>receipt photo</strong> — stored in a <strong>private</strong> storage area. It is never publicly accessible; guest pages display it only through a temporary link that expires.</li>
+      <li>The <strong>split details</strong>: the parsed items and amounts, your name, the payment handles you chose to include, and — as guests participate — each guest's chosen display name and which items they claimed.</li>
     </ul>
     <p>
-      Sentry is explicitly configured to <strong>not capture screenshots</strong>, because receipts may contain
-      personal information. We do not log the contents of your owner profile, payment handles, receipt photos,
-      OCR text, names of guests, or split calculations in crash reports.
-    </p>
-    <p>
-      If a Sentry account has not been configured at the time you install the app, no crash data is collected at all.
+      This information exists only to make the shared split work, and it is deleted automatically on the schedule in
+      Section 6. We never sell or share it for advertising or any unrelated purpose.
     </p>
 
-    <h3>1.5. In-app purchase information</h3>
+    <h3>1.4. Pass-the-phone splits and tap data</h3>
     <p>
-      TabTap charges a $0.50 fee per bill split via Apple In-App Purchase (iOS) or Google Play Billing (Android).
-      When you make a purchase:
+      If you split by passing the phone around the table, the tap data (which person claimed which items) and the
+      calculated shares live in temporary in-memory state on your device for that one session and are discarded when
+      you finish or leave the flow. Nothing about a pass-the-phone split is stored in our cloud (the receipt is still
+      read as described in 1.2).
     </p>
-    <ul>
-      <li>Apple or Google processes your payment using the payment method on your account</li>
-      <li>TabTap receives confirmation that a purchase succeeded, but <strong>does not see your payment method, billing address, or any financial details</strong></li>
-      <li>Apple and Google retain transaction records per their own privacy policies for tax, refund, and audit purposes</li>
-    </ul>
+
+    <h3>1.5. Crash reports</h3>
+    <p>
+      TabTap includes the Sentry SDK to help us find and fix bugs. When the app hits an unexpected error and Sentry
+      has been configured, Sentry collects a stack trace, the app version, generic device information (model, OS
+      version), and a short trail of session events (screen transitions, button taps) leading up to the error.
+    </p>
+    <p>
+      Sentry is configured to <strong>not capture screenshots</strong>, and we do not log the contents of your owner
+      profile, payment handles, receipt photos, parsed item text, guest names, or split calculations in crash reports.
+      If Sentry has not been configured, no crash data is collected at all.
+    </p>
+
+    <h3>1.6. In-app purchase information</h3>
+    <p>
+      TabTap charges a $0.50 fee per bill split via Apple In-App Purchase (iOS) or Google Play Billing (Android). Apple
+      or Google processes your payment; TabTap receives only confirmation that a purchase succeeded and
+      <strong>never sees your payment method, card number, or billing address</strong>. Apple and Google retain
+      transaction records under their own policies.
+    </p>
 
     <h2>2. Information we do NOT collect</h2>
-    <p>To be explicit, TabTap does not collect:</p>
+    <p>TabTap does not collect:</p>
     <ul>
-      <li>Email addresses, phone numbers, or postal addresses (other than what you voluntarily enter as a payment handle, which never leaves your device)</li>
+      <li>Email addresses or phone numbers, except where you voluntarily enter one as your own payment handle</li>
       <li>Location data</li>
-      <li>Advertising identifiers (IDFA, Advertising ID) for marketing purposes</li>
-      <li>Analytics about your usage patterns (other than crash reports as described above)</li>
-      <li>Contacts, calendar entries, microphone audio, or other phone data</li>
-      <li>Any data about your guests — their names and payment handles entered during a split are never persisted to your device or transmitted</li>
+      <li>Advertising identifiers (IDFA, Advertising ID)</li>
+      <li>Usage analytics or behavioral profiles (beyond the crash reports described above)</li>
+      <li>Contacts, calendar, microphone audio, or other phone data</li>
+      <li>Your payment card or bank details (Apple and Google handle the purchase)</li>
     </ul>
     <p><strong>We do not sell your information to anyone, ever.</strong></p>
 
     <h2>3. How we use information</h2>
-    <p>The minimal data we touch is used only for these purposes:</p>
     <table>
       <thead>
         <tr><th>Data</th><th>Purpose</th></tr>
       </thead>
       <tbody>
-        <tr><td>Owner profile (name, payment handles)</td><td>Pre-fill your details in outgoing payment requests</td></tr>
-        <tr><td>Receipt photo + OCR text</td><td>Show item bounding boxes so people can tap to claim items</td></tr>
+        <tr><td>Owner profile (name, payment handles)</td><td>Pre-fill your details in payment requests and, in a shared split, show guests how to pay you</td></tr>
+        <tr><td>Receipt photo (parsing)</td><td>Read the items, prices, and totals so they can be tapped and split</td></tr>
+        <tr><td>Share-link photo + split details</td><td>Let invited guests open the link, see the receipt, and claim their items</td></tr>
         <tr><td>Tap data</td><td>Calculate each person's share with proportional tax + tip</td></tr>
         <tr><td>Crash reports (Sentry, if configured)</td><td>Diagnose and fix bugs</td></tr>
-        <tr><td>IAP confirmation</td><td>Verify a $0.50 split-pass purchase completed</td></tr>
+        <tr><td>In-app purchase confirmation</td><td>Verify a $0.50 split-pass purchase completed</td></tr>
       </tbody>
     </table>
-    <p>
-      We do not use any of this data for advertising, profiling, or any purpose unrelated to the app's core function.
-    </p>
+    <p>We do not use any of this data for advertising or profiling.</p>
 
     <h2>4. Third-party services</h2>
     <p>
-      TabTap integrates with the third-party services below. When you interact with them, their privacy policies
-      apply in addition to ours.
+      TabTap relies on the services below. When you interact with them, their privacy policies apply in addition to ours.
+      Anthropic, Supabase, and Vercel act as our service providers, processing data on our behalf to operate the App.
     </p>
     <table>
       <thead>
         <tr><th>Service</th><th>What it does</th><th>Privacy policy</th></tr>
       </thead>
       <tbody>
-        <tr><td>Google ML Kit</td><td>On-device OCR. ML Kit does not transmit data during text recognition.</td><td><a href="https://developers.google.com/ml-kit/terms">Link</a></td></tr>
+        <tr><td>Anthropic (Claude)</td><td>Reads your receipt photo to extract items and prices. Does not train on the image.</td><td><a href="https://www.anthropic.com/legal/privacy">Link</a></td></tr>
+        <tr><td>Supabase</td><td>Cloud database + private storage that holds share-link photos and split data (United States).</td><td><a href="https://supabase.com/privacy">Link</a></td></tr>
+        <tr><td>Vercel</td><td>Hosts our backend and the guest claim web pages.</td><td><a href="https://vercel.com/legal/privacy-policy">Link</a></td></tr>
+        <tr><td>Google ML Kit</td><td>On-device text recognition to position items on the receipt. Runs locally.</td><td><a href="https://developers.google.com/ml-kit/terms">Link</a></td></tr>
         <tr><td>Sentry</td><td>Receives anonymized crash reports when configured.</td><td><a href="https://sentry.io/privacy/">Link</a></td></tr>
         <tr><td>Apple In-App Purchase</td><td>Processes the $0.50 split-pass purchase on iOS.</td><td><a href="https://www.apple.com/legal/privacy/">Link</a></td></tr>
         <tr><td>Google Play Billing</td><td>Processes the $0.50 split-pass purchase on Android.</td><td><a href="https://policies.google.com/privacy">Link</a></td></tr>
-        <tr><td>Venmo</td><td>Opened via deep link to send a payment charge. We pass a handle, amount, and note.</td><td><a href="https://venmo.com/legal/us-privacy-policy">Link</a></td></tr>
+        <tr><td>Venmo</td><td>Opened via deep link to send a payment. We pass a handle, amount, and note.</td><td><a href="https://venmo.com/legal/us-privacy-policy">Link</a></td></tr>
         <tr><td>PayPal / PayPal.me</td><td>Opened via a web link to send a payment.</td><td><a href="https://www.paypal.com/us/legalhub/privacy-full">Link</a></td></tr>
         <tr><td>Cash App</td><td>Opened via deep link to send a payment.</td><td><a href="https://cash.app/legal/us/en-us/privacy">Link</a></td></tr>
         <tr><td>Zelle</td><td>Recipient information is shown in-app; Zelle has no deep-link integration.</td><td><a href="https://www.zellepay.com/legal/privacy-policy">Link</a></td></tr>
@@ -161,100 +164,93 @@
       </thead>
       <tbody>
         <tr><td>Owner profile (name, payment handles)</td><td>Your device's app storage</td></tr>
-        <tr><td>Receipt photo</td><td>Your device's photo library and/or temporary app cache</td></tr>
-        <tr><td>Tap data, calculated shares, splits</td><td>In memory only, during a single session</td></tr>
-        <tr><td>Crash reports</td><td>Sentry servers (United States or EU), if Sentry is configured</td></tr>
+        <tr><td>Receipt photo during parsing</td><td>Transiently processed on our server (Vercel) and by Anthropic; not retained afterward</td></tr>
+        <tr><td>Share-link receipt photo</td><td>Private cloud storage (Supabase, United States); shown only via temporary expiring links</td></tr>
+        <tr><td>Share-link split record (name, items, handles, guest claims)</td><td>Cloud database (Supabase, United States)</td></tr>
+        <tr><td>Pass-the-phone tap data and calculated shares</td><td>In memory on your device, during a single session</td></tr>
+        <tr><td>Crash reports</td><td>Sentry servers (United States or EU), if configured</td></tr>
         <tr><td>Purchase records</td><td>Apple servers (iOS) or Google servers (Android)</td></tr>
       </tbody>
     </table>
 
     <h2>6. Data retention</h2>
     <ul>
-      <li><strong>Owner profile:</strong> persists on your device until you delete it in the app or uninstall TabTap</li>
-      <li><strong>Receipt photos and tap data:</strong> discarded at the end of each session</li>
-      <li><strong>Crash reports:</strong> retained for 90 days by Sentry per its standard policy</li>
-      <li><strong>Apple / Google purchase records:</strong> retained per Apple's and Google's policies, typically several years for tax and refund purposes</li>
+      <li><strong>Owner profile:</strong> stays on your device until you delete it in the app or uninstall TabTap</li>
+      <li><strong>Share-link receipt photo:</strong> deleted about one hour after you finalize the split, and within 24 hours in all cases</li>
+      <li><strong>Share-link split record</strong> (name, payment handles, items, guest claims): deleted 48 hours after the split is created</li>
+      <li><strong>Parsing copy of the photo:</strong> not retained after the items are read</li>
+      <li><strong>Pass-the-phone tap data:</strong> discarded at the end of each session</li>
+      <li><strong>Crash reports:</strong> retained for 90 days by Sentry</li>
+      <li><strong>Apple / Google purchase records:</strong> retained per Apple's and Google's policies</li>
     </ul>
 
     <h2>7. Your rights and choices</h2>
 
     <h3>7.1. Access and deletion</h3>
-    <p>Because TabTap stores almost everything on your device, you control most of your data directly:</p>
     <ul>
-      <li><strong>Delete your owner profile:</strong> open TabTap and clear your profile in settings, or uninstall the app to remove all on-device data</li>
-      <li><strong>Revoke camera or photo library permission:</strong> in your device's system settings under "TabTap"</li>
-      <li><strong>Delete crash reports:</strong> email us with the subject line "Privacy — Crash Report Deletion" along with your device's general info, and we will request deletion from Sentry</li>
-      <li><strong>Delete purchase records:</strong> contact Apple or Google directly per their respective data deletion policies</li>
+      <li><strong>On-device data:</strong> clear your profile in the app, or uninstall TabTap to remove all on-device data</li>
+      <li><strong>Share-link data:</strong> it deletes itself automatically on the schedule above; to have a specific shared split deleted sooner, email us with the share link and we'll remove it</li>
+      <li><strong>Camera or photo-library permission:</strong> revoke it anytime in your device's system settings under "TabTap"</li>
+      <li><strong>Crash reports:</strong> email us with the subject line "Privacy — Crash Report Deletion" and we'll request deletion from Sentry</li>
+      <li><strong>Purchase records:</strong> contact Apple or Google directly</li>
     </ul>
 
     <h3>7.2. California residents (CCPA / CPRA)</h3>
     <p>
-      If you are a California resident, you have the right to know what personal information we collect, the right
-      to delete it, the right to opt out of any sale or sharing of personal information, and the right to
-      non-discrimination for exercising your privacy rights. <strong>TabTap does not sell or share your personal
-      information.</strong> To exercise other rights, contact us at the email below.
+      If you are a California resident, you have the right to know what personal information we collect, to delete it,
+      to opt out of any sale or sharing of personal information, and to non-discrimination for exercising your rights.
+      <strong>TabTap does not sell or share your personal information.</strong> To exercise other rights, contact us at the email below.
     </p>
 
     <h3>7.3. Other U.S. state privacy laws</h3>
     <p>
-      Residents of states with comprehensive privacy laws (currently including Virginia, Colorado, Connecticut,
-      Utah, Texas, Oregon, Montana, and others) have rights similar to those described above. Contact us to exercise them.
+      Residents of states with comprehensive privacy laws (including Virginia, Colorado, Connecticut, Utah, Texas,
+      Oregon, Montana, and others) have similar rights. Contact us to exercise them.
     </p>
 
-    <h3>7.4. European residents (GDPR / UK GDPR)</h3>
+    <h3>7.4. European, UK, and Swiss residents (GDPR / UK GDPR)</h3>
     <p>
       If you are in the European Economic Area, the United Kingdom, or Switzerland, you have the right to access,
-      rectify, port, or delete your personal data, and to object to or restrict our processing. To exercise these
-      rights, contact us at the email below.
-    </p>
-    <p>
-      The legal basis for our limited processing of crash reports is our legitimate interest in maintaining and
-      improving the app's stability and security.
+      rectify, port, or delete your personal data, and to object to or restrict our processing. The legal basis for
+      reading your receipt and operating a share link is performing the service you request; the basis for crash
+      reports is our legitimate interest in app stability. To exercise these rights, contact us at the email below.
     </p>
 
     <h2>8. Children's privacy</h2>
     <p>
-      TabTap is not directed to children under 13 (or under 16 in the European Economic Area, the United Kingdom,
-      and Switzerland). We do not knowingly collect personal information from children. If you become aware that
-      a child has provided information through TabTap, please contact us and we will take reasonable steps to remove it.
+      TabTap is not directed to children under 13 (or under 16 in the European Economic Area, the United Kingdom, and
+      Switzerland). We do not knowingly collect personal information from children. If you believe a child has
+      provided information through TabTap, please contact us and we will take reasonable steps to remove it.
     </p>
 
     <h2>9. Security</h2>
     <p>
-      TabTap maintains no servers, user accounts, or stored credentials, which substantially reduces the surface
-      area for a data breach. Owner profile data is stored on your device using your operating system's standard
-      application storage. Crash reports are transmitted to Sentry over HTTPS. In-app purchases are processed by
-      Apple or Google over their own secure channels.
+      All data transmitted between the App, our server, and our service providers is encrypted in transit (HTTPS).
+      Share-link receipt photos are kept in a <strong>private</strong> storage bucket with no public access; they are
+      served only through short-lived signed links generated by our server. Our database uses row-level security, and
+      privileged operations run server-side with credentials that are never shipped in the app. Because share-link data
+      is deleted automatically within hours, very little is ever retained to begin with.
     </p>
-    <p>
-      No system is perfectly secure; if you become aware of a vulnerability, please report it to the email below.
-    </p>
+    <p>No system is perfectly secure; if you discover a vulnerability, please report it to the email below.</p>
 
     <h2>10. International users</h2>
     <p>
-      TabTap is operated from the United States. If you use TabTap from outside the United States, please be
-      aware that crash reports (if Sentry is configured) and purchase records (via Apple or Google) may be
-      transferred to and processed in the United States or other countries. By using TabTap, you consent to
-      this transfer.
+      TabTap is operated from the United States. If you use TabTap from outside the United States, your information
+      (including share-link data, receipt parsing, crash reports, and purchase records) may be transferred to and
+      processed in the United States or other countries. By using TabTap, you consent to this transfer.
     </p>
 
     <h2>11. Changes to this policy</h2>
     <p>
-      We may update this privacy policy as TabTap evolves. The "Last updated" date at the top of this page
-      reflects the most recent change. Material changes will be announced in the app's release notes. Continued
-      use of TabTap after a change indicates your acceptance.
-    </p>
-    <p>
-      A version history of this policy is maintained in the public repository where it is hosted, so you can
-      see exactly what changed and when.
+      We may update this privacy policy as TabTap evolves. The "Last updated" date at the top reflects the most recent
+      change, and material changes will be announced in the app's release notes. A version history is maintained in the
+      public repository where this policy is hosted, so you can see exactly what changed and when.
     </p>
 
     <h2>12. Contact</h2>
+    <p>For privacy questions, data deletion requests, or to report a vulnerability:</p>
     <p>
-      For privacy questions, data deletion requests, or to report a vulnerability:
-    </p>
-    <p>
-      <strong>Email:</strong> HelloTapTab@gmail.com<br />
+      <strong>Email:</strong> tabtapap@gmail.com<br />
       <strong>Subject line:</strong> "TabTap Privacy"
     </p>
     <p>We aim to respond within 7 business days.</p>
