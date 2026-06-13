@@ -1,7 +1,7 @@
 # TabTap — Google Play Data Safety Form Answers
 
 Pre-filled answers for the Google Play Console Data Safety form, consistent with the
-privacy policy at https://taptab-legal.vercel.app/privacy.
+privacy policy at https://tabtap.co/privacy.
 
 Open **Play Console → App content → Data safety** and work through each section below.
 
@@ -114,7 +114,7 @@ Open **Play Console → App content → Data safety** and work through each sect
 
 ## 5. Privacy Policy URL
 
-> **https://taptab-legal.vercel.app/privacy**
+> **https://tabtap.co/privacy**
 
 ---
 
