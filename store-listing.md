@@ -24,7 +24,7 @@ No spreadsheets. No guessing. No “just split it evenly” when someone only ha
 
 HOW IT WORKS
 
-1. Snap — Take a photo of the receipt (or pick one from your library). TabTap reads it in seconds.
+1. Snap — Take a photo of the receipt. TabTap reads it in seconds.
 
 2. Tap — Each person taps the items they ordered directly on the receipt. Colorful brushstrokes show who claimed what — pass the phone around, or send a link so friends can tap from their own phones.
 
